@@ -1,30 +1,76 @@
-// Fallback for using MaterialIcons on Android and web.
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { SymbolWeight, SymbolViewProps } from 'expo-symbols';
+import { ComponentProps } from 'react';
+import { OpaqueColorValue, type StyleProp, type TextStyle } from 'react-native';
 
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { SymbolWeight, SymbolViewProps } from "expo-symbols";
-import { ComponentProps } from "react";
-import { OpaqueColorValue, type StyleProp, type TextStyle } from "react-native";
-
-type IconMapping = Record<SymbolViewProps["name"], ComponentProps<typeof MaterialIcons>["name"]>;
+type IconMapping = Record<SymbolViewProps['name'], ComponentProps<typeof MaterialIcons>['name']>;
 type IconSymbolName = keyof typeof MAPPING;
 
-/**
- * Add your SF Symbols to Material Icons mappings here.
- * - see Material Icons in the [Icons Directory](https://icons.expo.fyi).
- * - see SF Symbols in the [SF Symbols](https://developer.apple.com/sf-symbols/) app.
- */
 const MAPPING = {
-  "house.fill": "home",
-  "paperplane.fill": "send",
-  "chevron.left.forwardslash.chevron.right": "code",
-  "chevron.right": "chevron-right",
-} as IconMapping;
+  // Navigation
+  'house.fill': 'home',
+  'list.bullet': 'list',
+  'target': 'flag',
+  'person.fill': 'person',
+  'gearshape.fill': 'settings',
+  // Actions
+  'plus': 'add',
+  'plus.circle.fill': 'add-circle',
+  'pencil': 'edit',
+  'trash': 'delete',
+  'magnifyingglass': 'search',
+  'xmark': 'close',
+  'xmark.circle.fill': 'cancel',
+  'checkmark': 'check',
+  'checkmark.circle.fill': 'check-circle',
+  'chevron.right': 'chevron-right',
+  'chevron.left': 'chevron-left',
+  'chevron.down': 'expand-more',
+  'chevron.up': 'expand-less',
+  'paperplane.fill': 'send',
+  'chevron.left.forwardslash.chevron.right': 'code',
+  // Finance
+  'dollarsign.circle.fill': 'attach-money',
+  'arrow.up.circle.fill': 'arrow-upward',
+  'arrow.down.circle.fill': 'arrow-downward',
+  'chart.bar.fill': 'bar-chart',
+  'chart.pie.fill': 'pie-chart',
+  'chart.line.uptrend.xyaxis': 'trending-up',
+  'banknote.fill': 'account-balance-wallet',
+  'creditcard.fill': 'credit-card',
+  // Categories
+  'fork.knife': 'restaurant',
+  'car.fill': 'directions-car',
+  'house.fill.badge': 'home',
+  'book.fill': 'school',
+  'heart.fill': 'favorite',
+  'gamecontroller.fill': 'sports-esports',
+  'laptopcomputer': 'laptop',
+  'arrow.up.right.circle.fill': 'trending-up',
+  // UI
+  'bell.fill': 'notifications',
+  'eye.fill': 'visibility',
+  'eye.slash.fill': 'visibility-off',
+  'lock.fill': 'lock',
+  'moon.fill': 'dark-mode',
+  'sun.max.fill': 'light-mode',
+  'arrow.right.square.fill': 'logout',
+  'square.and.arrow.up': 'share',
+  'info.circle.fill': 'info',
+  'exclamationmark.triangle.fill': 'warning',
+  'lightbulb.fill': 'lightbulb',
+  'star.fill': 'star',
+  'calendar': 'calendar-today',
+  'tag.fill': 'label',
+  'doc.text.fill': 'description',
+  'arrow.clockwise': 'refresh',
+  'ellipsis': 'more-horiz',
+  'ellipsis.circle': 'more-vert',
+  'flag.fill': 'flag',
+  'trophy.fill': 'emoji-events',
+  'savings': 'savings',
+} as unknown as IconMapping;
 
-/**
- * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.
- * This ensures a consistent look across platforms, and optimal resource usage.
- * Icon `name`s are based on SF Symbols and require manual mapping to Material Icons.
- */
 export function IconSymbol({
   name,
   size = 24,
@@ -39,3 +85,5 @@ export function IconSymbol({
 }) {
   return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style} />;
 }
+
+export type { IconSymbolName };
