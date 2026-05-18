@@ -63,3 +63,8 @@ Thumbs.db
 
 # Webdev artifacts (checkpoint zips, migrations, etc.)
 .webdev/
+
+# local env files
+.env
+.env.*
+.env*.local
